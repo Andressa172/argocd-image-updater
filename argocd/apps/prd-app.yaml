@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-prd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Andressa172/argocd-image-updater'
+    targetRevision: HEAD
+    path: manifests/prd
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: prd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
