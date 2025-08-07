@@ -4,13 +4,14 @@ metadata:
   name: nginx-dev
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: nginx=andressa172/nginx
-    argocd-image-updater.argoproj.io/nginx.update-strategy: latest
-    argocd-image-updater.argoproj.io/nginx.allow-tags: regexp:^.*-release$
+    argocd-image-updater.argoproj.io/image-list: andressaffdiniz/nginx-test
+    argocd-image-updater.argoproj.io/update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-branch: develop
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Andressa172/argocd-image-updater'
+    repoURL: 'https://github.com/Andressa172/argocd-image-updater.git'
     targetRevision: develop
     path: manifests/dev
   destination:
